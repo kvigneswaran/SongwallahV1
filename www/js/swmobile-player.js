@@ -52,7 +52,7 @@ var player = {
                 	  player.played = Utility.formatTime(position);
                 	   //angular.element(  querySelector("#media-played")).text();
                       player.updateSliderPosition(position);
-                      console.log('setting played position ' + player.played);
+                      //console.log('setting played position ' + player.played);
                    }
                 },
                 function(error) {
@@ -67,9 +67,9 @@ var player = {
 	   
        var timerDuration = setInterval(
           function() {
-             counter++;
-             if (counter > 20)
-                clearInterval(timerDuration);
+             //counter++;
+             //if (counter > 20)
+               // clearInterval(timerDuration);
 
              var duration = player.media.getDuration();
              if (duration > -1)
@@ -110,7 +110,8 @@ var player = {
 		   
 		   console.log("media path:" + path + " setting to remote url");
 		   if (path == "") {
-			   path = clip.url;
+			   //path = clip.url;
+			   console.log("trying to load from server");
 		   }
 		   player.actualPlay(clip, path);
 	   }
