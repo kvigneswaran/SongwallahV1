@@ -263,7 +263,7 @@ angular.module('swMobile.controllers', [])
         	
 	        	setTimeout(function () {
 	        		Player.getPlayer().doc = $document[0];
-	        		Player.getPlayer().play($scope.clip.url);
+	        		Player.getPlayer().play($scope.clip);
 	            }, 500);
 	        	nowPlaying = false;
         	}
