@@ -310,7 +310,7 @@ angular.module('swMobile.controllers', [])
 	    		if (!$rootScope.nowPlaying) {
 	    			Player.getPlayer().doc = $document[0];
 	    			Player.getPlayer().stop();
-	    			Player.getPlayer().play($scope.clip.url);
+	    			Player.getPlayer().play($scope.clip);
 	    		}
 	        }, 500);
     	};
