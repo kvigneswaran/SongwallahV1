@@ -208,7 +208,7 @@ angular.module('swMobile.controllers', [])
 	        		$scope.clip = tempClip;
 	        		Playlist.setCurrentIndex(index);       		
 	        	}
-	        	$rootScope.nowPlaying = true;
+	        	$rootScope.nowPlaying = false;
     		}
     	}
     	
