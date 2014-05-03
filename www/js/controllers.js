@@ -265,7 +265,7 @@ angular.module('swMobile.controllers', [])
 	        		Player.getPlayer().doc = $document[0];
 	        		Player.getPlayer().play($scope.clip );
 	            }, 500);
-	        	nowPlaying = false;
+	        	$rootScope.nowPlaying = false;
         	}
     	}
    	
