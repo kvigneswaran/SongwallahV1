@@ -102,7 +102,7 @@ var player = {
 	   var temp = new FileManager().file_exists('sw/clips/', clip.ID + '.mp3', function(successPath) {
 		   path=successPath;
 		   console.log("media path:" + path);
-		   actualPlay(clip, path);
+		   player.actualPlay(clip, path);
 
 	   },
 	   function (failurePath) {
@@ -112,7 +112,7 @@ var player = {
 		   if (path == "") {
 			   path = clip.url;
 		   }
-		   actualPlay(clip, path);
+		   player.actualPlay(clip, path);
 	   }
 	   );
    },
