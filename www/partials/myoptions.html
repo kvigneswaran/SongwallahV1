@@ -1,0 +1,41 @@
+<div class="topcoat-navigation-bar">
+    <div class="topcoat-navigation-bar__item center full">
+        <h1 class="topcoat-navigation-bar__title">My Options</h1>
+        <!-- -1000 indicates current clip -->
+        <a  ng-show="nowPlaying" ng-click="go('clips/-9999')" style="position:absolute;top:0;right:0;margin-top:5" class="Btn Size-XS Color-Orange BR-25 Icon-Right Hover-Orange"><span>Now Playing</span><i class="fa fa-chevron-right"></i></a>
+    </div>
+</div>
+
+
+	<div class="topcoat-list__container ">
+	    <ul class="topcoat-list">
+	        <li class="topcoat-list__item" ng-click="gotoMyOption(1)">
+	            <a>
+	                <p>My Favorites</p>
+	            </a>
+	        </li>
+	        <li class="topcoat-list__item" ng-click="gotoMyOption(2)">
+	            <a>
+	                <p>My Playlists</p>
+	            </a>
+	        </li>
+	        <li class="topcoat-list__item" ng-click="gotoMyOption(3)">
+	            <a>
+	                <p>My Radios</p>
+	            </a>
+	        </li>
+	        <li class="topcoat-list__item" ng-click="gotoMyOption(4)">
+	            <a>
+	                <p>My Recordings</p>
+	            </a>
+	        </li>
+	        <li class="topcoat-list__item" ng-click="gotoMyOption(5)">
+	            <a>
+	                <p>My Downloads</p>
+	            </a>
+	        </li>
+		</ul>
+	</div>
+
+   
+	

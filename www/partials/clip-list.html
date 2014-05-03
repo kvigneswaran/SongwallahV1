@@ -1,0 +1,52 @@
+<div class="topcoat-navigation-bar">
+    <div class="topcoat-navigation-bar__item center full">
+        <h1 class="topcoat-navigation-bar__title">Search Songwallah</h1>
+        <!-- -1000 indicates current clip -->
+        <a  ng-show="nowPlaying" ng-click="go('clips/-9999')" style="position:absolute;top:0;right:0;margin-top:5" class="Btn Size-XS Color-Orange BR-25 Icon-Right Hover-Orange"><span>Now Playing</span><i class="fa fa-chevron-right"></i></a>
+    </div>
+</div>
+
+<div class="search-bar">
+    <input ng-model="searchTerm" ng-change="clipSearch()" type="search" placeholder="What's on your mind?" class="topcoat-search-input search-key">
+</div>
+
+	<div class="swheaderrow" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
+		<div class="swheaderitem" ng-class="headeritemstyle[0]"><span ng-click="changeFilter(2)">Clips</span></div>
+		<div class="swheaderitem" ng-class="headeritemstyle[1]"><span ng-click="changeFilter(3)">Playlists</span></div>
+		<div class="swheaderitem" ng-class="headeritemstyle[2]"><span ng-click="changeFilter(4)">Radios</span></div>
+ 	</div>
+ 	<div style="width: 100%;top:168px;bottom:55px" ng-switch on="selectedfilter" ng-animate="'animate'">
+	<div ng-switch-when="2" class="topcoat-list__container scroller" when-scrolled="loadMore()">
+	    <ul class="topcoat-list list">
+	        <li ng-repeat="clip in clips" class="topcoat-list__item">
+	            <a ng-click="go('clips/' + $index)">
+	                <img ng-src="data:image/jpg;base64,{{clip.coverArtImageBytes}}">
+	                <p>{{clip.title}} ({{clip.album}})</p>
+	                <p>{{clip.shortDescription}}</p>
+	            </a>
+	        </li>
+		</ul>
+	</div>
+	<div ng-switch-when="3" class="topcoat-list__container scroller" when-scrolled="loadMore()">
+	    <ul class="topcoat-list list">
+	        <li ng-repeat="playlist in playlists" class="topcoat-list__item">
+	            <a ng-click="go('playlists/' + $index)">
+	                <img src="{{playlist.coverArtUrl}}">
+	                <p>{{playlist.title}}</p>
+	                <p>{{playlist.description}}</p>
+	            </a>
+	        </li>
+	    </ul>
+	</div>
+	<div ng-switch-when="4" class="topcoat-list__container scroller" when-scrolled="loadMore()">
+	    <ul class="topcoat-list list">
+	        <li ng-repeat="radio in radios" class="topcoat-list__item">
+	            <a ng-click="go('radios/' + $index)">
+	                <img src="{{playlist.coverArtUrl}}">
+	                <p>{{radio.title}}</p>
+	                <p>{{radio.description}}</p>
+	            </a>
+	        </li>
+	     </ul>
+	</div>
+</div>

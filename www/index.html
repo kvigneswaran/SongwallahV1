@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" ng-app="swMobile">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    	<link rel="stylesheet" href="css/bootstrap.css"/>
+   
+    	<!-- ionic example's css -->
+    	<link href="css/app.css" rel="stylesheet">
+
+    	<!-- angularjs scripts -->
+	    <link href="topcoat/css/topcoat-mobile-light.min.css" rel="stylesheet">
+	    <link href="css/topcoat-nav.css" rel="stylesheet">
+	    <link href="css/styles.css" rel="stylesheet">
+	    <link rel="stylesheet" href="css/CSS3-Buttons.css" type="text/css" />
+		<link rel="stylesheet" href="css/font-awesome.css" type="text/css" />
+	    <!--  <link rel="stylesheet" href="css/ratchet.css"> -->
+	    <link rel="stylesheet" href="css/index.css">
+    
+	    <script src="lib/angular.js"></script>
+	    <script src="lib/angular-animate.js"></script>
+	    <script src="lib/angular-sanitize.js"></script>
+	    <script src="lib/angular-touch.js"></script>
+	    <script src="lib/angular-resource.js"></script>
+	    <script src="lib/angular-route.js"></script>
+        
+	    <!-- the next 1 line will not work on Ripple emulator, only will work on build.phonegap.com -->
+	    <script src="phonegap.js"></script>    
+	    <script type="text/javascript" src="js/index.js"></script>
+	    <script src="http://use.edgefonts.net/source-sans-pro:n3,n4,n6;source-code-pro:n3.js"></script>
+	    
+	    <script src="js/directives.js"></script>
+	    <script src="js/app.js"></script>
+    
+	    <script src="js/controllers.js"></script>
+	    <script src="js/sw-services.js"></script>
+	    <script src="js/utility.js"></script>
+	    <script src="js/swmobile-player.js"></script>
+		<script src="js/filters.js"></script>
+		<script src="js/ui-bootstrap-tpls-0.10.0.js"></script>
+	<!--<script src='js/ng-infinite-scroll.js'></script>-->
+	<!--<script src="js/jquery-1.9.1.js"></script>-->
+    <!--<script src="js/rest-services.js"></script> -->
+	    <script src="js/marquee.js"></script>
+	    <script src="js/SocialSharing.js"></script>
+	    <script src="js/moment.min.js"></script>
+	    <script src="js/painlessfs.js"></script>
+	</head>
+
+	<body ng-controller="MainCtrl">
+		<script type="text/javascript">
+	    	//TODO uncomment for build.phonegap.com 
+	    	app.initialize();
+	 	</script>
+		<div ng-view ng-class="content"></div>
+		<nav class="topcoat-button-bar" ng-show="showNavBar">
+		   	<div class="topcoat-button-bar__item">
+		    	<button class="topcoat-button-bar__button full" ng-class="navButtonState[0]" id="homebtn">
+		    		<img src="img/swlogo.png" style="width:32px;height:32px"/>
+		    		<div>Home</div>
+		    	</button>
+		   	</div>
+		   	<div class="topcoat-button-bar__item">
+		    	<button class="topcoat-button-bar__button full" ng-class="navButtonState[1]" id="recordbtn">
+		     		<img src="img/record.png" style="width:32px;height:32px"/>
+		     		<div>Record</div>
+		     	</button>
+		   	</div>
+		   	<div class="topcoat-button-bar__item">
+		    	<button class="topcoat-button-bar__button full" ng-class="navButtonState[2]" id="searchbtn">
+		     		<img src="img/search.png" style="width:32px;height:32px"/>
+		     		<div>Search</div>
+		     	</button>
+		   	</div>
+		   	<div class="topcoat-button-bar__item"  ng-click="navigateTo(4)">
+		    	<button class="topcoat-button-bar__button full" ng-class="navButtonState[3]" id="mybtn">
+		     		<img src="img/library.png" style="width:32px;height:32px"/>
+		     		<div>My...</div>
+		     	</button>
+		   	</div>
+		   	<div class="topcoat-button-bar__item">
+		    	<button class="topcoat-button-bar__button full" ng-class="navButtonState[4]" id="settingsbtn">
+		     		<img src="img/settings.png" style="width:32px;height:32px"/>
+			     	<div>Settings</div>
+		     	</button>
+		   	</div>
+		</nav>
+	</body>
+</html>

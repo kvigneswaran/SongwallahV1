@@ -1,0 +1,30 @@
+<div class="topcoat-navigation-bar">
+    <div class="topcoat-navigation-bar__item center full">
+        <h1 class="topcoat-navigation-bar__title">My Favorites</h1>
+        <!-- -1000 indicates current clip -->
+        <a  ng-show="nowPlaying" ng-click="go('clips/-9999')" style="position:absolute;top:0;right:0;margin-top:5" class="Btn Size-XS Color-Orange BR-25 Icon-Right Hover-Orange"><span>Now Playing</span><i class="fa fa-chevron-right"></i></a>
+    </div>
+</div>
+
+
+	<div class="topcoat-list__container">
+	 <ul class="topcoat-list list">
+	   <li ng-repeat="clip in favoritesresults.clips" class="topcoat-list__item">
+	            <a ng-click="openfavorite('clip', $index)">
+	                <img ng-src="data:image/jpg;base64,{{clip.coverArtImageBytes}}">
+	                <p>{{clip.title}} ({{clip.album}})</p>
+	            </a>
+	   </li>
+
+
+	   <li ng-repeat="playlist in favoritesresults.playLists" class="topcoat-list__item">
+	            <a ng-click="openfavorite('playlist', $index)">
+	                <img ng-src="data:image/jpg;base64,{{clip.coverArtImageBytes}}">
+	                <p>{{playlist.title}} ({{playlist.totalClips}})</p>
+	            </a>
+	   </li>
+	    </ul> 
+	</div>
+
+   
+	
