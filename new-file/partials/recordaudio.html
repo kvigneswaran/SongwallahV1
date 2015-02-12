@@ -1,0 +1,23 @@
+<div class="topcoat-navigation-bar">
+	<div class="topcoat-navigation-bar__item center full">
+		<h1 class="topcoat-navigation-bar__title">Record - Songwallah</h1>
+	</div>
+</div>
+
+<div class="search-bar">
+
+	<input ng-model="recordedTitle" type="text" maxlength="256" class="topcoat-text-input" placeholder="Title" value=""/>
+	<textarea ng-model="recordedDesc" class="topcoat-textarea" rows="6" cols="36" placeholder="Description"></textarea>
+	
+	<button class="topcoat-button" ng-click="recordAudio()">
+  		Start Recording
+	</button>
+	
+	<span>
+	{{captureProperties}}
+	</span>
+	
+	<span>
+	{{recordStatus}}
+	</span>
+</div>

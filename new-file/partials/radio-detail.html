@@ -1,0 +1,62 @@
+<div class="topcoat-navigation-bar">
+	<div class="topcoat-navigation-bar__item left quarter">
+		<a class="topcoat-icon-button--quiet back-button" href=""
+			ng-click="back()"> <span class="topcoat-icon topcoat-icon--back"></span>
+		</a>
+	</div>
+	<div class="topcoat-navigation-bar__item center half">
+		<h1 class="topcoat-navigation-bar__title">Radio Details</h1>
+	</div>
+	<!-- -1000 indicates current clip -->
+    <a  ng-show="nowPlaying" ng-click="go('clips/-9999')" style="position:absolute;top:0;right:0;margin-top:5" class="Btn Size-XS Color-Orange BR-25 Icon-Right Hover-Orange"><span>Now Playing</span><i class="fa fa-chevron-right"></i></a>
+</div>
+<div class='details'>
+	<img style="width:50px;height:50px;padding-right:10px;" src="{{radio.coverArtUrl}}"/><h1>{{radio.title}}</h1>	
+	<div id="moreplaylistdetails" ng-show="showmore">
+				<div>{{radio.description}}</div>
+				<div>Uploaded by {{radio.ownerName}}&nbsp;{{convertDate(radio.createdDate)}}</div>
+	</div>
+	<a ng-click="showhidePlaylistDetails()" style="cursor:pointer;"><span ng-hide="showmore">More...&#x25BC;</span><span ng-show="showmore">Less...&#x25B2;</span></a>
+	<div>
+		<img
+			style="position: relative; left: 0; top: 0; z-index: -10; width: 100%;"
+			src="{{radio.coverArtUrl}}">	
+	</div>
+    <div id="stats" style="width:100%;bottom: 91px; position: fixed;width: 100%;height: 35px;border-bottom-style:inset; background-color:gray;border-bottom-width:4px;">
+		<div style="display: table; width:100%; padding-top: 5px">
+			<div style="display: table-row">
+				<div style="display: table-cell">
+					<span><img style="height:15px;width:15px;" src="img/play.png"/></span>
+					<span>{{radio.usageData.plays}}</span>
+				</div>
+				<div style="display: table-cell">
+					<span><img style="height:15px;width:15px;" src="img/comments.png"/></span>
+					<span>{{radio.usageData.totalComments}}</span>
+				</div>
+				<div style="display: table-cell">
+					<span><img style="height:15px;width:15px;" src="img/fb.png"/></span>
+					<span>{{radio.usageData.fbShares}}</span>
+				</div>
+				<div style="display: table-cell">
+					<span><img style="height:15px;width:15px;" src="img/mail.png"/></span>
+					<span>{{radio.usageData.emailShares}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="actions" style="bottom: 55px; position: fixed;width: 100%;height: 32px;border-bottom-style:inset; background-color:gray;border-bottom-width:4px;">
+		<div style="display: table; width:100%; padding-top: 5px">
+			<div style="display: table-row">
+				<div style="display: table-cell; width: 20%">
+					<span><img ng-click="shareClip()" style="height:25px;width:25px;" src="img/mobileshare.png"/></span>
+				</div>
+				<div style="display: table-cell; width: 20%">
+					<span><img style="height:25px;width:25px;" src="img/favorite.jpg"/></span>
+				</div>
+				<div style="display: table-cell; width: 20%;">
+					<rating style="position:fixed;font-size:16px;" ng-class="userRated ? userRatedClass : otherRatedClass" value="radio.userRating" max="5" state-on="glyphicon-star" state-off="glyphicon-star-empty"></rating>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

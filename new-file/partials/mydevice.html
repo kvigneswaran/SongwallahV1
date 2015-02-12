@@ -1,0 +1,108 @@
+<div class="topcoat-navigation-bar">
+	<div class="topcoat-navigation-bar__item left quarter">
+		<a class="topcoat-icon-button--quiet back-button" href=""
+			ng-click="go('/myoptions')"> <span class="topcoat-icon topcoat-icon--back"></span>
+		</a>
+	</div>
+
+    <div class="topcoat-navigation-bar__item center half">
+        <h1 class="topcoat-navigation-bar__title">My Downloads</h1>
+        <!-- -1000 indicates current clip -->
+        <a  ng-show="nowPlaying" ng-click="go('clips/-9999')" style="position:absolute;top:0;right:0;margin-top:5" class="Btn Size-XS Color-Orange BR-25 Icon-Right Hover-Orange"><span>Now Playing</span><i class="fa fa-chevron-right"></i></a>
+    </div>
+</div>
+
+<div class="swheaderrow" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
+	<div class="swheaderitem" ng-class="headeritemstyle[0]"><span ng-click="changeDeviceFilter(1)">Downloads</span></div>
+	<div class="swheaderitem" ng-class="headeritemstyle[1]"><span ng-click="changeDeviceFilter(2)">Recordings</span></div>
+</div>
+
+ <div style="width: 100%;top:168px;bottom:55px" ng-switch on="selecteddevicefilter" ng-animate="'animate'">
+	<div ng-switch-when="1" class="topcoat-list__container">
+	    <ul class="topcoat-list">
+	        <li class="topcoat-list__item" ng-click="displaydownloadsbycategory(1)" style="padding: 0 0 0 1em !important;">
+	            <a>
+	                <p>All Clips<img src="img/rightarrow.png"  style="position: absolute; width: 1.5em; height:1.5em; right:0;"  /> </p>
+	            </a>
+	        </li>
+	        <li class="topcoat-list__item" ng-click="displaydownloadsbycategory(2)" style="padding: 0 0 0 1em !important;">
+	            <a>
+	                <p>Languages <img src="img/rightarrow.png"  style="position: absolute; width: 1.5em; height:1.5em; right:0;"  /></p>
+	            </a>
+	        </li>
+	        <li class="topcoat-list__item" ng-click="displaydownloadsbycategory(3)" style="padding: 0 0 0 1em !important;">
+	            <a>
+	                <p>Albums <img src="img/rightarrow.png"  style="position: absolute; width: 1.5em; height:1.5em; right:0;"  /></p>
+	            </a>
+	        </li>
+	        <li class="topcoat-list__item" ng-click="displaydownloadsbycategory(4)" style="padding: 0 0 0 1em !important;">
+	            <a>
+	                <p>Artists <img src="img/rightarrow.png"  style="position: absolute; width: 1.5em; height:1.5em; right:0;"  /></p>
+	            </a>
+	        </li>
+	        <li class="topcoat-list__item" ng-click="displaydownloadsbycategory(5)" style="padding: 0 0 0 1em !important;">
+	            <a>
+	                <p>Categories <img src="img/rightarrow.png"  style="position: absolute; width: 1.5em; height:1.5em; right:0;"  /></p>
+	            </a>
+	        </li>
+	        <li class="topcoat-list__item" ng-click="displaydownloadsbycategory(6)" style="padding: 0 0 0 1em !important;">
+	            <a>
+	                <p>Genres <img src="img/rightarrow.png"  style="position: absolute; width: 1.5em; height:1.5em; right:0;"  /></p>
+	            </a>
+	        </li>
+		</ul>
+	 </div>
+	 <div ng-switch-when="2">
+	 	<div style="left:0px;width: 100%;top:168px;bottom:55px" ng-show="showclips">
+			<div ng-show="loading" style="width:100%">Loading...</div>
+			<input style="width:100%"placeholder="Search" ng-model="clipquery">
+			<div class="btn-group">
+		        <label class="btn btn-primary" ng-model="recordingsSortOrder" btn-radio="'time'">Rec. Time</label>
+        		<label class="btn btn-primary" ng-model="recordingsSortOrder" btn-radio="'title'">Title</label>
+		    </div>
+			<div ng-hide="loading"  style="top:100px;width:95%" class="topcoat-list__container scroller">
+			    <ul class="topcoat-list list">	    	
+			        <li ng-init="rowHeightStyle = (clip.data.playAll ? {'height':'2em'} : {})" style="width:95%" ng-repeat="clip in downloadedClips | filter:clipquery" class="topcoat-list__item" ng-swipe-right="showActions = false" ng-swipe-left="showActions = true">
+			        	<!-- anchor, except for Play All -->
+			            <a ng-style="rowHeightStyle" id="{{clip.firstChar}}" ng-click="playclip(clip.data.ID)"  ng-swipe-right="showActions = false" ng-swipe-left="showActions = true">	            	
+			                <img ng-if="!clip.data.playAll && (clip.data.coverArtImageBytes !== undefined && clip.data.coverArtImageBytes != null && clip.data.coverArtImageBytes != '')" ng-src="data:image/jpg;base64,{{clip.data.coverArtImageBytes}}">
+			                <img ng-if="!clip.data.playAll && (clip.data.coverArtImageBytes === undefined || clip.data.coverArtImageBytes == null || clip.data.coverArtImageBytes == '')" src="img/sw-default.jpg">
+			                <p  ng-swipe-right="showActions = false" ng-swipe-left="showActions = true">{{clip.data.title}}<span ng-if="!clip.data.playAll"> (</span>{{clip.data.album}}<span ng-if="!clip.data.playAll">)</span></p>
+			                <!-- <p>{{clip.data.shortDescription}}</p> -->
+			               
+			            </a>
+			            <button ng-click="deleteLocalClip(clip.data.ID)" ng-show="!clip.data.playAll && showActions" style="position:absolute; top:5px; background-color:red; color:white; right:0px" class="topcoat-button">Delete</button>
+			        </li>
+				</ul>
+			</div>	
+		</div>
+		<div style="position:absolute;width: 5%;top:100px;bottom:55px;right:0px;" ng-show="showclips">
+			<a ng-click="gotoAnchor('A')">A</a>
+			<a ng-click="gotoAnchor('B')">B</a>
+			<a ng-click="gotoAnchor('C')">C</a>
+			<a ng-click="gotoAnchor('D')">D</a>
+			<a ng-click="gotoAnchor('E')">E</a>
+			<a ng-click="gotoAnchor('F')">F</a>
+			<a ng-click="gotoAnchor('G')">G</a>
+			<a ng-click="gotoAnchor('H')">H</a>
+			<a ng-click="gotoAnchor('I')">&nbsp;I&nbsp;</a>
+			<a ng-click="gotoAnchor('J')">J</a>
+			<a ng-click="gotoAnchor('K')">K</a>
+			<a ng-click="gotoAnchor('L')">L</a>
+			<a ng-click="gotoAnchor('M')">M</a>
+			<a ng-click="gotoAnchor('N')">N</a>
+			<a ng-click="gotoAnchor('O')">O</a>
+			<a ng-click="gotoAnchor('P')">P</a>
+			<a ng-click="gotoAnchor('Q')">Q</a>
+			<a ng-click="gotoAnchor('R')">R</a>
+			<a ng-click="gotoAnchor('S')">S</a>
+			<a ng-click="gotoAnchor('T')">T</a>
+			<a ng-click="gotoAnchor('U')">U</a>
+			<a ng-click="gotoAnchor('V')">V</a>
+			<a ng-click="gotoAnchor('W')">W</a>
+			<a ng-click="gotoAnchor('X')">X</a>
+			<a ng-click="gotoAnchor('Y')">Y</a>
+			<a ng-click="gotoAnchor('Z')">Z</a>
+		</div>
+	 </div>
+</div>
