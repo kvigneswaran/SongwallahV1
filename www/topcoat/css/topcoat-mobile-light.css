@@ -170,10 +170,11 @@
   line-height: 3rem;
   letter-spacing: 1px;
   color: #454545;
-  text-shadow: 0 1px #fff;
+  /*text-shadow: 0 1px #fff;
+  box-shadow: inset 0 1px #fff;*/
   vertical-align: top;
   background-color: #e5e9e8;
-  box-shadow: inset 0 1px #fff;
+  
   border: 1px solid #9daca9;
   border-radius: 6px;
 }
@@ -197,9 +198,11 @@
 .topcoat-button--large--cta:focus,
 .topcoat-button-bar__button:focus,
 .topcoat-button-bar__button--large:focus {
-  border: 1px solid #0036ff;
-  box-shadow: inset 0 1px rgba(255,255,255,0.36), 0 0 0 2px #6fb5f1;
+
+  border: 0px solid #0036ff;
+  /* box-shadow: inset 0 1px rgba(255,255,255,0.36), 0 0 0 2px #6fb5f1;
   outline: 0;
+  */
 }
 
 .topcoat-button:active,
@@ -1783,17 +1786,20 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
 */
 
 .topcoat-navigation-bar {
-  height: 4.375rem;
+	background-image: url("../../img/header-bg.png");
+	background-repeat:repeat-x;		
+	position:relative;
+	background-size:100% 70px;  
   padding-left: 1rem;
   padding-right: 1rem;
-  background: #e5e9e8;
+  height:71px;
   color: #454545;
   box-shadow: inset 0 -1px #9daca9, 0 1px #d6dcdb;
 }
 
 .topcoat-navigation-bar__item {
   margin: 0;
-  line-height: 4.375rem;
+  /*line-height: 4.375rem;*/
   vertical-align: top;
 }
 
@@ -1801,6 +1807,11 @@ input[type="checkbox"]:disabled:active + .topcoat-checkbox__checkmark:before {
   font-size: 1.3rem;
   font-weight: 400;
   color: #454545;
+}
+.topcoat-navigation-bar__title img
+{
+	margin-top:20px;
+
 }
 
 /*
@@ -3758,3 +3769,225 @@ Everything below this line should be calculated using the variables above. This 
 /* Notification */
 
 /* Search */
+
+/* body area */
+
+.container-setting
+{
+	background-image: url("../../img/grid-img.png");
+	background-repeat:no-repeat;
+	background-position:top;
+	background-size:100%;
+	padding:0 !important;
+	width:100% !important;
+	margin:0 !important;
+	display: inline-table;
+	
+}
+.facebook-icon{
+	margin:40px auto 0;
+	text-align:center;
+	
+}
+
+.sub-title
+{
+	
+	font-size:1em;
+	font-family:"Candara";
+	font-size:3em;
+	color:#595448;	
+	text-align:center;
+	font-weight:bold;
+}
+.login-form-container
+{
+	width:80%;
+	margin:20px auto 0;
+	padding:0;	
+	position:relative;
+	
+}
+.label-name{
+	font-size:24px;
+	color:#796d6a;
+	font-family:"DesignioMedium";
+	float:left;	
+	margin-top:20px;
+}
+.text-box input{
+	width:100%;
+	background-color:#796d6a;
+	border-radius:6px;	
+	border:2px solid #9ca5b2;	
+	color:#fff;
+	height:60px;
+	text-indent:5px;
+	
+}
+.text-box input:hover{
+	width:100%;
+	background-color:#4e4644;
+	border:2px solid #64e0bf;
+	color:#ffffff;
+	font-size:14pt;
+	font-family:"DesignioMedium";
+	
+}
+.text-box input:focus{
+	width:100%;
+	background-color:#4e4644;	
+	color:#ffffff;
+	font-size:14pt;
+	font-family:"DesignioMedium";
+	
+	
+}
+.sign-box button
+{
+	width:100%;
+	background-color:#36d6ae;
+	border-radius:6px;
+	height:65px;
+	border:1px solid #9ca5b2;
+	margin-top:40px;
+	color:#212121;
+	font-size:22px;
+	font-family:"DesignioMedium";
+	box-shadow:inset 0px 0px 2px 2px #2aa182;
+}
+.sign-box button:hover
+{
+	color:#fff;
+	background-color:#36d6ae;	
+	box-shadow:0px 1px 1px 1px #e2e3e3;
+}
+.left-labelname{
+	font-size:24px;
+	color:#453b39;
+	font-family:"DesignioMedium";
+	float:left;	
+	margin-top:20px;
+	width:50%;
+	float:left;
+	text-decoration:underline;
+}
+.right-labelname{
+	font-size:24px;
+	color:#453b39;
+	text-decoration:underline;
+	font-family:"DesignioMedium";
+	float:left;	
+	margin-top:20px;
+	width:50%;
+	float:left;
+	text-align:right;
+}
+.sign-box{
+	margin:0px auto 0;
+	text-align:center;	
+}
+.show-log-label{
+	color:#453b39 !important;
+	text-decoration:underline;	
+	text-align:center;
+	margin:20px 0 80px 0;
+	font-size:24px;
+	font-family:"DesignioMedium";
+}
+.container span{
+	width:100%;
+	text-align:center !important;
+	float:left;
+}
+.bottom-img
+{
+	background-image: url("../../img/grid-img-bottom.png") !important;
+	background-repeat:repeat-x;	
+	background-position:center bottom;
+	background-size:100%; 
+	width:100%;
+	position:fixed;
+	bottom:68px;
+	height:100%;
+	}
+
+@media (min-width: 320px) and (max-width: 359px) {
+	
+	.sub-title
+	{
+		font-size:2em;
+	}
+	.label-name{
+		font-size:11pt;	
+		margin-top:5px;
+	}
+	.text-box input, .sign-box button{		
+		height:28px;
+		border-radius:4px;	
+		font-size:16px;	
+	}
+	.sign-box button
+	{
+		font-size:16px;
+		height:30px;
+	}
+	.left-labelname, .right-labelname, .show-log-label{
+		font-size:11pt;	
+		margin-top:5px;
+	}
+	.facebook-icon{
+		margin:15px auto 0;
+		text-align:center;
+		width:80%;	
+	}
+	.sign-box button{
+		margin-top:15px;
+	}
+	.login-form-container
+	{
+		margin:15px audio 0;
+	}
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+	.login-form-container
+	{
+		margin-top:30px;
+	}
+	.sub-title
+	{	
+		font-size:2em;			
+	}
+	.label-name{
+		font-size:11pt;	
+		margin-top:15px;
+	}
+	.text-box input, .sign-box button{		
+		height:34px;
+		border-radius:4px;	
+		font-size:16px;	
+	}
+	.sign-box button
+	{
+		font-size:16px;
+		height:34px;
+	}
+	.left-labelname, .right-labelname{
+		font-size:11pt;	
+		margin-top:15px;
+	}
+	.facebook-icon{
+		margin:20px auto 0;
+		text-align:center;
+		width:80%;	
+	}
+	.sign-box button{
+		margin-top:25px;
+	}
+	.show-log-label{
+	margin-top:10px;
+	font-size:11pt;	
+	}
+	
+}

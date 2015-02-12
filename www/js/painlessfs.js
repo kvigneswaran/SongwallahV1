@@ -95,11 +95,11 @@ var DirManager = function(){
 
 
 			        for (i=0; i<limit; i++) {
-			            //console.log(entries[i].name);
+			            //console.debug(entries[i].name);
 			            ret.push(entries[i].name);
 
 			        }
-			        // console.log('LIST: '+ret);
+			        // console.debug('LIST: '+ret);
 			        success(ret);
 				}
 		}
@@ -161,9 +161,9 @@ var DirManager = function(){
 		fail = (typeof fail == 'undefined')? Log('DirManager','crete fail'): fail;
 		success = (typeof success == 'undefined')? Log('DirManager','crete fail'): success;
 
-		//console.log(current_object.cache);
+		//console.debug(current_object.cache);
 		delete current_object.cache[path];
-		//console.log(current_object.cache);
+		//console.debug(current_object.cache);
 		this.create(
 			path,
 			function(entry){
@@ -180,18 +180,18 @@ var Log = function(bucket, tag){
   return function(message){
     if(typeof bucket != 'undefined')
     {
-      console.log(' '+bucket+':');
+      console.debug(' '+bucket+':');
     }
     if(typeof tag != 'undefined')
     {
-      console.log(' '+tag+':');
+      console.debug(' '+tag+':');
     }
     if(typeof message != 'object'){
-      console.log('       '+message);
+      console.debug('       '+message);
     }
     else
     {
-      console.log(message);
+      console.debug(message);
     }
   };
 }
@@ -232,18 +232,18 @@ var Log = function(bucket, tag){
   return function(message){
     if(typeof bucket != 'undefined')
     {
-      console.log(' '+bucket+':');
+      console.debug(' '+bucket+':');
     }
     if(typeof tag != 'undefined')
     {
-      console.log(' '+tag+':');
+      console.debug(' '+tag+':');
     }
     if(typeof message != 'object'){
-      console.log('       '+message);
+      console.debug('       '+message);
     }
     else
     {
-      console.log(message);
+      console.debug(message);
     }
   };
 }
@@ -319,7 +319,7 @@ var FileManager = function(){
 			function(fs){
 				var dont_repeat_inner = dont_repeat;
 				// get file handler
-				console.log(fs.root);
+				console.debug(fs.root);
 				fs.root.getFile(
 					full_file_path, 
 					{create: true, exclusive: false}, 
@@ -369,13 +369,13 @@ var FileManager = function(){
 		                encodeURI(url),
 		                sPath,
 		                function(theFile) {
-		                    console.log("download complete: " + theFile.toURI());
+		                    console.debug("download complete: " + theFile.toURI());
 		                    success(theFile);
 		                },
 		                function(error) {
-		                    console.log("download error source " + error.source);
-		                    console.log("download error target " + error.target);
-		                    console.log("upload error code: " + error.code);
+		                    console.debug("download error source " + error.source);
+		                    console.debug("download error target " + error.target);
+		                    console.debug("upload error code: " + error.code);
 		                    fail(error);
 		                }
 		            );
@@ -391,7 +391,7 @@ var FileManager = function(){
 	};
 
 	this.read_file = function(dir, filename, success, fail){
-		// console.log(dir);
+		// console.debug(dir);
 		fail = (typeof fail == 'undefined')? Log('FileManager','read file fail'): fail;
 		this.load_file(
 			dir,
@@ -461,15 +461,15 @@ var FileManager = function(){
 			function(fs){
 				// get file handler
 				fs.root.getFile(full_file_path, {create: false, exclusive: false}, function(fileEntry){
-					console.log("PATH:" + path);
+					console.debug("PATH:" + path);
 					path=fileEntry.fullPath;
-					console.log("found file:" + fileEntry);
-					console.log("found file:" + fileEntry.fullPath);
+					console.debug("found file:" + fileEntry);
+					console.debug("found file:" + fileEntry.fullPath);
 					success(path);
 				},  
 				function(fileEntry){
 					path="";
-					console.log("can't find file:" +  full_file_path);
+					console.debug("can't find file:" +  full_file_path);
 					fail(path);
 					});
 			}
@@ -488,7 +488,7 @@ var ParallelAgregator = function(count, success, fail, bucket)
   var success_results_labeled = {};
   var ini_count = 0;
   var log_func= function(the_data){
-    //console.log(the_data)
+    //console.debug(the_data)
   }
   var object = this;
   current_bucket = (typeof bucket == 'undefined')? 'aggregator' : bucket;

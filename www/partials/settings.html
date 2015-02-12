@@ -1,0 +1,64 @@
+<div class="topcoat-navigation-bar">
+	<div class="topcoat-navigation-bar__item center full">
+		<div class="topcoat-navigation-bar__title"><img src="img/logo.png" /></div>
+	</div>
+</div>
+
+
+
+	<div class="container-setting" role="body" ng-if="!usersignedin">
+    	 	
+            <div class="login-form-container">
+				<div class="sub-title">
+					Sign In
+                </div>
+			    <span style="color:red;">
+					{{singinerror}}
+			   </span>
+            	<div class="label-name">
+                	User Name
+                </div>
+                <div class="text-box">
+                	<input type="text" name="username" maxlength="256"  ng-model="userlogin" ng-pattern="userloginpattern">
+                </div>
+                <div class="label-name">
+                	Password
+                </div>
+                <div class="text-box">
+                	<input type="password" name="password" maxlength="256"  ng-model="password" >
+                </div>
+                <div class="sign-box">
+                	<button ng-click="swlogin(userlogin, password)">Sing In</button>
+                </div>
+                <div class="row-container">
+                	<div class="left-labelname">
+                		Forgot Password?
+                	</div>
+                    <div class="right-labelname">
+                		<a ng-click="go('signup')" > Sign Up? </a>
+                	</div>
+                </div>
+                <div class="sign-box">
+                	<img ng-click="fbLogin()" src="img/facebook-icon.png" class="facebook-icon">
+                </div>
+                <div class="show-log-label">
+                	<a ng-click="go('/syslog')">Show log</a>
+                </div>
+            	
+            </div>
+			<div class="bottom-img"></div>
+    </div>
+	
+
+
+
+<div class="search-bar" ng-if="usersignedin">
+  <div><img src="{{userProfilePic}}"> </div>	
+  <div> <span style="font-weight:bold;"> User id  </span>	 : {{userid}} </div>   
+  <div> <span style="font-weight:bold;"> User Name  </span> : {{username}} </div>
+  <div>  <span style="font-weight:bold;"> User NickName  </span> : {{userNickName}} </div> 
+  
+  <div>
+  		<button class="topcoat-button" ng-click="signout()">	Signout </button>
+  </div>
+</div>

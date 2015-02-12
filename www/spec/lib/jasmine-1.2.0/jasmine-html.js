@@ -107,7 +107,7 @@ jasmine.HtmlReporter = function(_doc) {
       if (console.log.apply) {
         console.log.apply(console, arguments);
       } else {
-        console.log(arguments); // ie fix: console.log.apply doesn't exist on ie
+        debug(arguments); // ie fix: console.log.apply doesn't exist on ie
       }
     }
   };
@@ -592,7 +592,7 @@ jasmine.TrivialReporter.prototype.log = function() {
     if (console.log.apply) {
       console.log.apply(console, arguments);
     } else {
-      console.log(arguments); // ie fix: console.log.apply doesn't exist on ie
+      debug(arguments); // ie fix: console.log.apply doesn't exist on ie
     }
   }
 };

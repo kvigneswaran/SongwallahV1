@@ -1,8 +1,13 @@
 <div class="topcoat-navigation-bar">
-    <div class="topcoat-navigation-bar__item center full">
+    <div class="topcoat-navigation-bar__item center three-quarters">
         <h1 class="topcoat-navigation-bar__title">Search Songwallah</h1>
         <!-- -1000 indicates current clip -->
         <a  ng-show="nowPlaying" ng-click="go('clips/-9999')" style="position:absolute;top:0;right:0;margin-top:5" class="Btn Size-XS Color-Orange BR-25 Icon-Right Hover-Orange"><span>Now Playing</span><i class="fa fa-chevron-right"></i></a>
+    </div>
+
+    <div class="topcoat-navigation-bar__item right quarter">
+		<img ng-show="swcloudavailable && swcloudenabled"  style="width:15px; height:15px;  padding-right:5px;" ng-click="checkcloud()"  src="img/bluecloud.png" /> 
+		<img ng-show="!swcloudavailable || !swcloudenabled"  style="width:15px; height:15px; padding-right:5px;"  ng-click="checkcloud()"  src="img/cloud.png"  />  
     </div>
 </div>
 
@@ -19,9 +24,10 @@
 	<div ng-switch-when="2" class="topcoat-list__container scroller" when-scrolled="loadMore()">
 	    <ul class="topcoat-list list">
 	        <li ng-repeat="clip in clips" class="topcoat-list__item">
-	            <a ng-click="go('clips/' + $index)">
-	                <img ng-src="data:image/jpg;base64,{{clip.coverArtImageBytes}}">
-	                <p>{{clip.title}} ({{clip.album}})</p>
+	            <a ng-click="go('clips/' + $index)">	            	
+	                <img ng-if="clip.coverArtImageBytes !== undefined && clip.coverArtImageBytes != null && clip.coverArtImageBytes != ''" ng-src="data:image/jpg;base64,{{clip.coverArtImageBytes}}">
+	                <img ng-if="clip.coverArtImageBytes === undefined || clip.coverArtImageBytes == null || clip.coverArtImageBytes == ''" src="img/sw-default.jpg">
+	                <span ng-show="isPlaying(clip.ID)"><img src="img/headerplay.png" style="height:15px; width:15px;" /></span><p>{{clip.title}} ({{clip.album}}) </p> <span style="pisition:absolute;top:5px; right:0px;z-index:1000;padding:2px;">{{formatTime(clip.metaData.duration)}}</span>
 	                <p>{{clip.shortDescription}}</p>
 	            </a>
 	        </li>
@@ -31,7 +37,8 @@
 	    <ul class="topcoat-list list">
 	        <li ng-repeat="playlist in playlists" class="topcoat-list__item">
 	            <a ng-click="go('playlists/' + $index)">
-	                <img src="{{playlist.coverArtUrl}}">
+	                <img ng-if="playlist.coverArtUrl !== undefined && playlist.coverArtUrl != null && playlist.coverArtUrl != ''" ng-src="{{playlist.coverArtUrl}}">
+	                <img ng-if="playlist.coverArtUrl === undefined || playlist.coverArtUrl == null || playlist.coverArtUrl == ''" src="img/playlist.png">
 	                <p>{{playlist.title}}</p>
 	                <p>{{playlist.description}}</p>
 	            </a>
@@ -42,7 +49,8 @@
 	    <ul class="topcoat-list list">
 	        <li ng-repeat="radio in radios" class="topcoat-list__item">
 	            <a ng-click="go('radios/' + $index)">
-	                <img src="{{playlist.coverArtUrl}}">
+	                <img ng-if="radio.coverArtUrl !== undefined && radio.coverArtUrl != null && radio.coverArtUrl != ''" ng-src="{{radio.coverArtUrl}}">
+	                <img ng-if="radio.coverArtUrl === undefined || radio.coverArtUrl == null || radio.coverArtUrl == ''" src="img/radio.png">
 	                <p>{{radio.title}}</p>
 	                <p>{{radio.description}}</p>
 	            </a>

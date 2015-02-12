@@ -6,32 +6,32 @@
     </div>
 </div>
 
-
 	<div class="topcoat-list__container ">
 	    <ul class="topcoat-list">
-	        <li class="topcoat-list__item" ng-click="gotoMyOption(1)">
+	        <li class="topcoat-list__item" ng-click="gotoMyOption(5)" style="padding: 0 0 0 1em !important;">
 	            <a>
-	                <p>My Favorites</p>
+	                <p>On this device<img src="img/rightarrow.png"  style="position: absolute; width: 1.5em; height:1.5em; right:0;"  /></p>
 	            </a>
 	        </li>
-	        <li class="topcoat-list__item" ng-click="gotoMyOption(2)">
+
+	        <li class="topcoat-list__item" ng-click="gotoMyOption(1)" style="padding: 0 0 0 1em !important;">
 	            <a>
-	                <p>My Playlists</p>
+	                <p>My Favorites<span ng-if="!usersignedin">(Needs Sign In)</span> <img src="img/rightarrow.png"  style="position: absolute; width: 1.5em; height:1.5em; right:0;"  /> </p>
 	            </a>
 	        </li>
-	        <li class="topcoat-list__item" ng-click="gotoMyOption(3)">
+	        <li class="topcoat-list__item" ng-click="gotoMyOption(2)" style="padding: 0 0 0 1em !important;">
 	            <a>
-	                <p>My Radios</p>
+	                <p>My Playlists<span ng-if="!usersignedin">(Needs Sign In)</span> <img src="img/rightarrow.png"  style="position: absolute; width: 1.5em; height:1.5em; right:0;"  /></p>
 	            </a>
 	        </li>
-	        <li class="topcoat-list__item" ng-click="gotoMyOption(4)">
+	        <li class="topcoat-list__item" ng-click="gotoMyOption(3)" style="padding: 0 0 0 1em !important;">
 	            <a>
-	                <p>My Recordings</p>
+	                <p>My Radios<span ng-if="!usersignedin">(Needs Sign In)</span> <img src="img/rightarrow.png"  style="position: absolute; width: 1.5em; height:1.5em; right:0;"  /></p>
 	            </a>
 	        </li>
-	        <li class="topcoat-list__item" ng-click="gotoMyOption(5)">
+	        <li class="topcoat-list__item" ng-click="gotoMyOption(4)" style="padding: 0 0 0 1em !important;">
 	            <a>
-	                <p>My Downloads</p>
+	                <p>My Recordings<span ng-if="!usersignedin">(Needs Sign In)</span> <img src="img/rightarrow.png"  style="position: absolute; width: 1.5em; height:1.5em; right:0;"  /></p>
 	            </a>
 	        </li>
 		</ul>

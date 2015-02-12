@@ -6,7 +6,7 @@
  * License: MIT
  */
 angular.module("ui.bootstrap", ["ui.bootstrap.tpls", "ui.bootstrap.transition","ui.bootstrap.collapse","ui.bootstrap.accordion","ui.bootstrap.alert","ui.bootstrap.bindHtml","ui.bootstrap.buttons","ui.bootstrap.carousel","ui.bootstrap.position","ui.bootstrap.datepicker","ui.bootstrap.dropdownToggle","ui.bootstrap.modal","ui.bootstrap.pagination","ui.bootstrap.tooltip","ui.bootstrap.popover","ui.bootstrap.progressbar","ui.bootstrap.rating","ui.bootstrap.tabs","ui.bootstrap.timepicker","ui.bootstrap.typeahead"]);
-angular.module("ui.bootstrap.tpls", ["template/accordion/accordion-group.html","template/accordion/accordion.html","template/alert/alert.html","template/carousel/carousel.html","template/carousel/slide.html","template/datepicker/datepicker.html","template/datepicker/popup.html","template/modal/backdrop.html","template/modal/window.html","template/pagination/pager.html","template/pagination/pagination.html","template/tooltip/tooltip-html-unsafe-popup.html","template/tooltip/tooltip-popup.html","template/popover/popover.html","template/progressbar/bar.html","template/progressbar/progress.html","template/progressbar/progressbar.html","template/rating/rating.html","template/tabs/tab.html","template/tabs/tabset.html","template/timepicker/timepicker.html","template/typeahead/typeahead-match.html","template/typeahead/typeahead-popup.html"]);
+angular.module("ui.bootstrap.tpls", ["template/accordion/accordion-group.html","template/accordion/accordion.html","template/alert/alert.html","template/carousel/carousel.html","template/carousel/slide.html","template/datepicker/datepicker.html","template/datepicker/popup.html","template/modal/backdrop.html","template/modal/window.html","template/pagination/pager.html","template/pagination/pagination.html","template/tooltip/tooltip-html-unsafe-popup.html","template/tooltip/tooltip-popup.html","template/popover/popover.html","template/progressbar/bar.html","template/progressbar/progress.html","template/progressbar/progressbar.html","http://app.songwallah.com/sw/mobile/www/template/rating/rating.html","template/tabs/tab.html","template/tabs/tabset.html","template/timepicker/timepicker.html","template/typeahead/typeahead-match.html","template/typeahead/typeahead-popup.html"]);
 angular.module('ui.bootstrap.transition', [])
 
 /**
@@ -635,6 +635,7 @@ angular.module('ui.bootstrap.carousel', ['ui.bootstrap.transition'])
     controller: 'CarouselController',
     require: 'carousel',
     templateUrl: 'template/carousel/carousel.html',
+    //templateUrl: 'http://www.songwallah.com/sw/mobile/www/template/carousel/carousel.html',
     scope: {
       interval: '=',
       noTransition: '=',
@@ -713,7 +714,9 @@ function CarouselDemoCtrl($scope) {
     restrict: 'EA',
     transclude: true,
     replace: true,
-    templateUrl: 'template/carousel/slide.html',
+    //templateUrl: 'template/carousel/slide.html',
+    templateUrl: 'http://www.songwallah.com/sw/mobile/www/template/carousel/slide.html',
+
     scope: {
     },
     link: function (scope, element, attrs, carouselCtrl) {
@@ -2550,7 +2553,10 @@ angular.module('ui.bootstrap.rating', [])
       onLeave: '&'
     },
     controller: 'RatingController',
+    //UNCOMMENT FOR build.phonegap.com -- 
     templateUrl: 'template/rating/rating.html',
+    //COMMENT the next line for build.phonegap.com
+    //templateUrl: 'http://app.songwallah.com/sw/mobile/www/template/rating/rating.html',
     replace: true
   };
 });
@@ -3593,8 +3599,8 @@ angular.module("template/progressbar/progressbar.html", []).run(["$templateCache
     "<div class=\"progress\"><div class=\"progress-bar\" ng-class=\"type && 'progress-bar-' + type\" ng-transclude></div></div>");
 }]);
 
-angular.module("template/rating/rating.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("template/rating/rating.html",
+angular.module("http://app.songwallah.com/sw/mobile/www/template/rating/rating.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("http://app.songwallah.com/sw/mobile/www/template/rating/rating.html",
     "<span ng-mouseleave=\"reset()\">\n" +
     "    <i ng-repeat=\"r in range\" ng-mouseenter=\"enter($index + 1)\" ng-click=\"rate($index + 1)\" class=\"glyphicon\" ng-class=\"$index < val && (r.stateOn || 'glyphicon-star') || (r.stateOff || 'glyphicon-star-empty')\"></i>\n" +
     "</span>");

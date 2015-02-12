@@ -1214,7 +1214,7 @@ angular.module('ionic.service.popup', ['ionic.service.templateLoad'])
  *      ]
  *    });
  *    myPopup.then(function(res) {
- *      console.log('Tapped!', res);
+ *      debug('Tapped!', res);
  *    });
  *    $timeout(function() {
  *       myPopup.close(); //close the popup after 3 seconds for some reason
@@ -1228,9 +1228,9 @@ angular.module('ionic.service.popup', ['ionic.service.templateLoad'])
  *      });
  *      confirmPopup.then(function(res) {
  *        if(res) {
- *          console.log('You are sure');
+ *          debug('You are sure');
  *        } else {
- *          console.log('You are not sure');
+ *          debug('You are not sure');
  *        }
  *      });
  *    };
@@ -1242,7 +1242,7 @@ angular.module('ionic.service.popup', ['ionic.service.templateLoad'])
  *        template: 'It might taste good'
  *      });
  *      alertPopup.then(function(res) {
- *        console.log('Thank you for not eating my delicious ice cream cone');
+ *        debug('Thank you for not eating my delicious ice cream cone');
  *      });
  *    };
  *  };
@@ -1382,7 +1382,7 @@ function($animate, $ionicTemplateLoader, $ionicBackdrop, $log, $q, $timeout, $ro
      *    inputType: 'password',
      *    inputPlaceholder: 'Your password'
      *  }).then(function(res) {
-     *    console.log('Your password is', res);
+     *    debug('Your password is', res);
      *  });
      * ```
      * @param {object} options The options for showing the prompt popup, of the form:

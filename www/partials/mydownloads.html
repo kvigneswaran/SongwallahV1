@@ -1,0 +1,70 @@
+<div class="topcoat-navigation-bar">
+	<div class="topcoat-navigation-bar__item left half">
+		<a style="font-size:0.75em;" class="topcoat-icon-button--quiet back-button" href=""
+			ng-click="goBack()"><span class="topcoat-icon topcoat-icon--back"></span>{{backlabel}}
+		</a>
+	</div>
+	<div class="topcoat-navigation-bar__item center half">
+		<h1 class="topcoat-navigation-bar__title">My Downloads</h1>
+	</div>
+</div>
+
+<div style="left:0px;width: 100%;top:168px;bottom:55px" ng-show="showclips">
+	<div ng-show="loading" style="width:100%">Loading...</div>
+	<input style="width:100%"placeholder="Search" ng-model="clipquery">
+	<div ng-hide="loading"  style="top:100px;width:95%" class="topcoat-list__container scroller">
+	    <ul class="topcoat-list list">	    	
+	        <li ng-init="rowHeightStyle = (clip.data.playAll ? {'height':'2em'} : {})" style="width:95%" ng-repeat="clip in downloadedClips | filter:clipquery" class="topcoat-list__item" ng-swipe-right="showActions = false" ng-swipe-left="showActions = true">
+	        	<!-- anchor, except for Play All -->
+	            <a ng-style="rowHeightStyle" id="{{clip.firstChar}}" ng-click="playclip(clip.data.ID)"  ng-swipe-right="showActions = false" ng-swipe-left="showActions = true">	            	
+	                <img ng-if="!clip.data.playAll && (clip.data.coverArtImageBytes !== undefined && clip.data.coverArtImageBytes != null && clip.data.coverArtImageBytes != '')" ng-src="data:image/jpg;base64,{{clip.data.coverArtImageBytes}}">
+	                <img ng-if="!clip.data.playAll && (clip.data.coverArtImageBytes === undefined || clip.data.coverArtImageBytes == null || clip.data.coverArtImageBytes == '')" src="img/sw-default.jpg">
+	                <p  ng-swipe-right="showActions = false" ng-swipe-left="showActions = true">{{clip.data.title}}<span ng-if="!clip.data.playAll"> (</span>{{clip.data.album}}<span ng-if="!clip.data.playAll">)</span></p>
+	                <!-- <p>{{clip.data.shortDescription}}</p> -->
+	               
+	            </a>
+	            <button ng-click="deleteLocalClip(clip.data.ID)" ng-show="!clip.data.playAll && showActions" style="position:absolute; top:5px; background-color:red; color:white; right:0px" class="topcoat-button">Delete</button>
+	        </li>
+		</ul>
+	</div>	
+</div>
+<div style="position:absolute;width: 5%;top:100px;bottom:55px;right:0px;" ng-show="showclips">
+<a ng-click="gotoAnchor('A')">A</a>
+<a ng-click="gotoAnchor('B')">B</a>
+<a ng-click="gotoAnchor('C')">C</a>
+<a ng-click="gotoAnchor('D')">D</a>
+<a ng-click="gotoAnchor('E')">E</a>
+<a ng-click="gotoAnchor('F')">F</a>
+<a ng-click="gotoAnchor('G')">G</a>
+<a ng-click="gotoAnchor('H')">H</a>
+<a ng-click="gotoAnchor('I')">&nbsp;I&nbsp;</a>
+<a ng-click="gotoAnchor('J')">J</a>
+<a ng-click="gotoAnchor('K')">K</a>
+<a ng-click="gotoAnchor('L')">L</a>
+<a ng-click="gotoAnchor('M')">M</a>
+<a ng-click="gotoAnchor('N')">N</a>
+<a ng-click="gotoAnchor('O')">O</a>
+<a ng-click="gotoAnchor('P')">P</a>
+<a ng-click="gotoAnchor('Q')">Q</a>
+<a ng-click="gotoAnchor('R')">R</a>
+<a ng-click="gotoAnchor('S')">S</a>
+<a ng-click="gotoAnchor('T')">T</a>
+<a ng-click="gotoAnchor('U')">U</a>
+<a ng-click="gotoAnchor('V')">V</a>
+<a ng-click="gotoAnchor('W')">W</a>
+<a ng-click="gotoAnchor('X')">X</a>
+<a ng-click="gotoAnchor('Y')">Y</a>
+<a ng-click="gotoAnchor('Z')">Z</a>
+</div>
+<div style="width: 100%;top:168px;bottom:55px" ng-hide="showclips">
+    <input placeholder="Search" ng-model="query">
+	<div class="topcoat-list__container scroller">
+	    <ul class="topcoat-list list">
+	        <li ng-repeat="val in values | filter:query" class="topcoat-list__item">
+	            <a ng-click="showclipsbygroup(val)">	            	
+	                <p>{{val}}</p>
+	            </a>
+	        </li>
+		</ul>
+	</div>
+</div>
