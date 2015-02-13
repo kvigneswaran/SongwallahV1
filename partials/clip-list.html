@@ -27,7 +27,9 @@
 	            <a ng-click="go('clips/' + $index)">	            	
 	                <img ng-if="clip.coverArtImageBytes !== undefined && clip.coverArtImageBytes != null && clip.coverArtImageBytes != ''" ng-src="data:image/jpg;base64,{{clip.coverArtImageBytes}}">
 	                <img ng-if="clip.coverArtImageBytes === undefined || clip.coverArtImageBytes == null || clip.coverArtImageBytes == ''" src="img/sw-default.jpg">
-	                <span ng-show="isPlaying(clip.ID)"><img src="img/headerplay.png" style="height:15px; width:15px;" /></span><p>{{clip.title}} ({{clip.album}}) </p> <span style="pisition:absolute;top:5px; right:0px;z-index:1000;padding:2px;">{{formatTime(clip.metaData.duration)}}</span>
+	                <span ng-show="isPlaying(clip.ID)"><img src="img/headerplay.png" style="height:15px; width:15px;" /></span>
+					<p>{{clip.title}} ({{clip.album}}) </p> 
+					<span style="pisition:absolute;top:5px; right:0px;z-index:1000;padding:2px;">{{formatTime(clip.metaData.duration)}}</span>
 	                <p>{{clip.shortDescription}}</p>
 	            </a>
 	        </li>
@@ -57,4 +59,5 @@
 	        </li>
 	     </ul>
 	</div>
+	<div class="bottom-img"></div>
 </div>
