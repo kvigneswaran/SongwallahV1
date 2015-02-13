@@ -1,0 +1,30 @@
+<div class="topcoat-navigation-bar">
+	<div class="topcoat-navigation-bar__item left quarter">
+		<a class="topcoat-icon-button--quiet back-button" href=""
+			ng-click="back()"> <span class="topcoat-icon topcoat-icon--back"></span>
+		</a>
+	</div>
+	<div class="topcoat-navigation-bar__item center half">
+		<h1 class="topcoat-navigation-bar__title">My Playlists</h1>
+		 <a  ng-show="nowPlaying" ng-click="go('clips/-9999')" style="position:absolute;top:0;right:0;margin-top:5" class="Btn Size-XS Color-Orange BR-25 Icon-Right Hover-Orange"><span>Now Playing</span><i class="fa fa-chevron-right"></i></a>
+	</div>
+</div>
+
+
+<div class="topcoat-list__container scroller" when-scrolled="loadMorePlaylists()" style="top:70px !important;" ng-if="usersignedin">
+	 <ul class="topcoat-list list">
+	   <li ng-repeat="playlist in myplaylists.playLists" class="topcoat-list__item">
+	            <a ng-click="openplaylist($index)">
+	                <img ng-if="playlist.coverArtUrl !== undefined && playlist.coverArtUrl != null && playlist.coverArtUrl != ''" ng-src="{{playlist.coverArtUrl}}">
+	                <img ng-if="playlist.coverArtUrl === undefined || playlist.coverArtUrl == null || playlist.coverArtUrl == ''" src="img/playlist.png">
+	                <p>{{playlist.title}} ({{playlist.totalClips}})</p>
+	            </a>
+	   </li>
+	 </ul> 
+</div>
+
+   
+	
+	<div ng-if="!usersignedin">
+		You need to <a ng-click="go('settings')" style="text-decoration:underline;color:blue;">sign-in</a> to see your playlists
+	</div>	

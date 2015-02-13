@@ -1,0 +1,32 @@
+<div class="topcoat-navigation-bar">
+    <div class="topcoat-navigation-bar__item center three-quarters">
+        <h1 class="topcoat-navigation-bar__title">Search Songwallah</h1>
+        <!-- -1000 indicates current clip -->
+        <a  ng-show="nowPlaying" ng-click="go('clips/-9999')" style="position:absolute;top:0;right:0;margin-top:5" class="Btn Size-XS Color-Orange BR-25 Icon-Right Hover-Orange"><span>Now Playing</span><i class="fa fa-chevron-right"></i></a>
+    </div>
+
+    <div class="topcoat-navigation-bar__item right quarter">
+		<img ng-show="swcloudavailable"  style="width:15px; height:15px;  padding-right:5px;" ng-click="checkcloud()"  src="img/bluecloud.png" /> 
+		<img ng-hide="swcloudavailable"  style="width:15px; height:15px; padding-right:5px;"  ng-click="checkcloud()"  src="img/cloud.png"  />  
+    </div>
+
+</div>
+
+<div class="search-bar">
+    <input ng-model="searchTerm" type="search" placeholder="What's on your mind?" class="topcoat-search-input search-key">
+</div>
+
+<div style="width: 100%;top:168px;bottom:55px">
+	<div class="topcoat-list__container scroller">
+	    <ul class="topcoat-list list">
+	        <li ng-repeat="clip in downloadedClips | filter:searchTerm" class="topcoat-list__item">
+	            <a ng-click="playClip($index)">	            	
+	                <img ng-if="clip.coverArtImageBytes !== undefined && clip.coverArtImageBytes != null && clip.coverArtImageBytes != ''" ng-src="data:image/jpg;base64,{{clip.coverArtImageBytes}}">
+	                <img ng-if="clip.coverArtImageBytes === undefined || clip.coverArtImageBytes == null || clip.coverArtImageBytes == ''" src="img/sw-default.jpg">
+	                <span ng-show="isPlaying(clip.ID)"><img src="img/headerplay.png" style="height:15px; width:15px;" /></span><p>{{clip.title}} ({{clip.album}}) </p> <span style="pisition:absolute;top:5px; right:0px;z-index:1000;padding:2px;">{{formatTime(clip.duration)}}</span>
+	                <p>{{clip.shortDescription}}</p>
+	            </a>
+	        </li>
+		</ul>
+	</div>
+</div>

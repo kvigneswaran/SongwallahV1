@@ -1,0 +1,84 @@
+<div class="topcoat-navigation-bar">
+	<div class="topcoat-navigation-bar__item left quarter">
+		<a class="topcoat-icon-button--quiet back-button" href=""
+			ng-click="backToNowPlaying()"> <span class="topcoat-icon topcoat-icon--back"></span>
+		</a>
+	</div>
+	<div class="topcoat-navigation-bar__item center half">
+		<h1 class="topcoat-navigation-bar__title">Playlist Details</h1>
+	</div>
+</div>
+<div class='details' ng-hide="showSavePlaylist">
+	<img style="width:50px;height:50px;padding-right:10px;" src="{{playlist.coverArtUrl}}"/><h1>{{playlist.title}}</h1>	
+	<div  ng-if="!playlist.isTempPlaylist"  id="moreplaylistdetails" ng-show="showmore">
+				<div>{{playlist.description}}</div>
+				<div>Uploaded by {{playlist.ownerName}}&nbsp;{{convertDate(playlist.createdDate)}}</div>
+	</div>
+	<a  ng-if="!playlist.isTempPlaylist" ng-click="showhidePlaylistDetails()" style="cursor:pointer;"><span ng-hide="showmore">More...&#x25BC;</span><span ng-show="showmore">Less...&#x25B2;</span></a>
+
+	<div class="topcoat-button-bar" style="top: 150px;border-top: 1px solid;border-left-style: none;border-bottom: 1px solid;">
+  		 <button class="topcoat-button-bar__button" style="margin-left: .8em;" ng-click="deleteAllPlaylistClips()">Clear Playlist</button>
+		 <button class="topcoat-button-bar__button" style="margin-left: .8em;" ng-click="showSavePlaylist = true">Save Playlist</button>
+	</div>
+
+	<div class="topcoat-list__container scroller" style="top:173px;bottom:140px">
+    	<ul class="topcoat-list list">
+        	<li ng-repeat="clip in playlist.clips track by $index" class="topcoat-list__item" style="height:2.5em;padding-bottom:.25em;padding-top:.5em;" ng-swipe-right="showActions = false" ng-swipe-left="showActions = true">
+            	<div style="display:flex; flex-flow:row;width:100%;height:1.5em;" ng-click="playFromPlaylist($index)">
+            		<div style="display:flex;width:10%;">
+            			{{$index + 1}}.&nbsp;
+            			<img src="img/headerplay.png" ng-show="$index == playlist.currentindex" style="width:15px;height:15px"/>
+            			<img src="img/blank.png" ng-hide="$index == playlist.currentindex" style="width:15px;height:15px"/>
+            		</div>
+                	<div style="display:flex;width:75%;"  ng-swipe-right="showActions = false" ng-swipe-left="showActions = true">{{ clip.title | characters:25 }}</div>
+                	<div style="display:flex;width:10%;">{{convert(clip.metaData.duration)}}</div>
+            	</div>
+            	<button ng-click="deletePlaylistClip($index)" ng-show="!clip.data.playAll && showActions" style="position:absolute; top:5px; background-color:red; color:white; right:0px" class="topcoat-button">Delete</button>            	
+        	</li>
+    	</ul>
+    </div>
+    <div id="stats" style="width:100%;bottom: 91px; position: fixed;width: 100%;height: 35px;border-bottom-style:inset; background-color:gray;border-bottom-width:4px;">
+		<div style="display: table; width:100%; padding-top: 5px">
+			<div style="display: table-row">
+				<div style="display: table-cell">
+					<span><img style="height:15px;width:15px;" src="img/play.png"/></span>
+					<span>{{playlist.usageData.plays}}</span>
+				</div>
+				<div style="display: table-cell">
+					<span><img style="height:15px;width:15px;" src="img/comments.png"/></span>
+					<span>{{playlist.usageData.totalComments}}</span>
+				</div>
+				<div style="display: table-cell">
+					<span><img style="height:15px;width:15px;" src="img/fb.png"/></span>
+					<span>{{playlist.usageData.fbShares}}</span>
+				</div>
+				<div style="display: table-cell">
+					<span><img style="height:15px;width:15px;" src="img/mail.png"/></span>
+					<span>{{playlist.usageData.emailShares}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="actions" style="bottom: 55px; position: fixed;width: 100%;height: 32px;border-bottom-style:inset; background-color:gray;border-bottom-width:4px;">
+		<div style="display: table; width:100%; padding-top: 5px">
+			<div style="display: table-row">
+				<div style="display: table-cell; width: 20%">
+					<span><img ng-click="shareClip()" style="height:25px;width:25px;" src="img/mobileshare.png"/></span>
+				</div>
+				<div style="display: table-cell; width: 20%">
+					<span><img style="height:25px;width:25px;" src="img/favorite.jpg"/></span>
+				</div>
+				<div style="display: table-cell; width: 20%;">
+					<rating style="position:fixed;font-size:16px;" ng-class="userRated ? userRatedClass : otherRatedClass" value="playlist.userRating" max="5" state-on="glyphicon-star" state-off="glyphicon-star-empty"></rating>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-show="showSavePlaylist">
+	<input ng-model="playlistTitle" type="text" maxlength="256" class="topcoat-text-input" placeholder="Title" value=""/>
+	<textarea ng-model="playlistDesc" class="topcoat-textarea" rows="2" cols="36" placeholder="Description"></textarea>
+	<textarea ng-model="playlistKeywords" class="topcoat-textarea" rows="2" cols="36" placeholder="Keywords"></textarea>	
+	<button ng-click="savePlaylist()">Save Playlist</button> <button ng-click="showSavePlaylist = false">Cancel</button>
+	
+</div>
