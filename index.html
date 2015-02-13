@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" ng-app="swMobile">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    	<link rel="stylesheet" href="css/bootstrap.css"/>
+   
+    	<!-- ionic example's css -->
+    	<link href="css/app.css" rel="stylesheet">
+		
+    	<!-- angularjs scripts -->
+	    <link href="topcoat/css/topcoat-mobile-light.css" rel="stylesheet">
+	    <link href="css/topcoat-nav.css" rel="stylesheet">
+	    <link href="css/styles.css" rel="stylesheet">
+	    <link rel="stylesheet" href="css/CSS3-Buttons.css" type="text/css" />
+		<link rel="stylesheet" href="css/font-awesome.css" type="text/css" />
+	    <!--  <link rel="stylesheet" href="css/ratchet.css"> -->
+	    <link rel="stylesheet" href="css/index.css">
+    
+	    <script src="lib/angular.js"></script>
+	    <script src="lib/angular-animate.js"></script>
+	    <script src="lib/angular-touch.js"></script>
+	    <script src="lib/angular-resource.js"></script>
+	    <script src="lib/angular-route.js"></script>
+	    <script src="lib/angular-sanitize.js"></script>
+        
+	    <!-- the next 1 line will not work on Ripple emulator, only will work on build.phonegap.com -->
+	    <script src="phonegap.js"></script>    
+	    <script type="text/javascript" src="js/index.js"></script>
+	    <script src="http://use.edgefonts.net/source-sans-pro:n3,n4,n6;source-code-pro:n3.js"></script>
+	    
+	    <script src="js/directives.js"></script>
+	    <script src="js/app.js"></script>
+    
+	    <script src="js/controllers.js"></script>
+<!-- 	    <script src="js/mydevice-controller.js"></script>
+ -->
+ 	    <script src="js/sw-services.js"></script>
+ 	    <script src="js/lzstring.js"></script>
+	    <script src="js/utility.js"></script>
+	    <script src="js/swmobile-player.js"></script>
+		<script src="js/filters.js"></script>
+		<script src="js/ui-bootstrap-tpls-0.10.0.js"></script>
+	<!--<script src='js/ng-infinite-scroll.js'></script>-->
+	<!--<script src="js/jquery-1.9.1.js"></script>-->
+    <!--<script src="js/rest-services.js"></script> -->
+	    <script src="js/marquee.js"></script>
+	    <script src="js/SocialSharing.js"></script>
+<!-- 	 	<script src="js/facebookConnectPlugin.js"></script>
+ -->	 	
+ 	<script src="cdv-plugin-fb-connect.js"></script > 
+	<script src="facebook-js-sdk.js"></script >    
+ 		<script src="js/moment.min.js"></script>
+	    <script src="js/painlessfs.js"></script>
+	    <script src="js/angular-file-upload.js"></script>
+<!-- 		<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="js/faceGap-1.0.js"></script>
+ -->	
+ 		<script src="js/openfb.js"></script >
+ 		</head>
+
+	<body ng-controller="MainCtrl">
+		<script type="text/javascript">
+	    	//TODO uncomment for build.phonegap.com 
+	    	app.initialize();
+	 	</script>
+		<div ng-view ng-class="content"></div>
+		<nav class="topcoat-button-bar" ng-show="showNavBar">
+		   	<div class="topcoat-button-bar__item" ng-click="navigateTo(1)">
+		    	<button class="topcoat-button-bar__button full" ng-class="navButtonState[0]" id="homebtn">
+		    		<img src="img/home.png"/>
+		    		<div>HOME</div>
+		    	</button>
+		   	</div>
+		   	<div class="topcoat-button-bar__item" ng-click="navigateTo(2)">
+		    	<button class="topcoat-button-bar__button full" ng-class="navButtonState[1]" id="recordbtn">
+		     		<img src="img/record-1.png"/>
+		     		<div>RECORD</div>
+		     	</button>
+		   	</div>
+		   	<div class="topcoat-button-bar__item"  ng-click="navigateTo(3)">
+		    	<button class="topcoat-button-bar__button full" ng-class="navButtonState[2]" id="searchbtn">
+		     		<img src="img/search-1.png"/>
+		     		<div>SEARCH</div>
+		     	</button>
+		   	</div>
+		   	<div class="topcoat-button-bar__item"  ng-click="navigateTo(4)">
+		    	<button class="topcoat-button-bar__button full" ng-class="navButtonState[3]" id="mybtn">
+		     		<img src="img/option-list.png"/>
+		     		<div>MY OPTIONS</div>
+		     	</button>
+		   	</div>
+		   	<div class="topcoat-button-bar__item" ng-click="navigateTo(5)">
+		    	<button class="topcoat-button-bar__button full" ng-class="navButtonState[4]" id="settingsbtn">
+		     		<img src="img/settings-1.png"/>
+			     	<div>SETTINGS</div>
+		     	</button>
+		   	</div>
+		</nav>
+	</body>
+</html>
